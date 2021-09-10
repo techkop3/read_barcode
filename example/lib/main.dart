@@ -27,7 +27,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   final barcodeReader = BarcodeReader();
   String? code;
 
@@ -41,7 +40,7 @@ class _HomePageState extends State<HomePage> {
 
   void _listener() {
     setState(() {
-      code=barcodeReader.keycode!;
+      code = barcodeReader.keycode!;
     });
   }
 
@@ -60,9 +59,13 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text('Scan the barcode, scanned code will be displayed below'),
+              child: Text(
+                  'Scan the barcode, scanned code will be displayed below'),
             ),
-            Text(code!, style: TextStyle(fontSize: 30),),
+            Text(
+              code!,
+              style: TextStyle(fontSize: 30),
+            ),
           ],
         ),
       ),
