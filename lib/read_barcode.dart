@@ -30,25 +30,14 @@ class BarcodeReader with ChangeNotifier {
     }
     if (keyEvent is RawKeyUpEvent) {
       if (keyEvent.data.logicalKey == LogicalKeyboardKey.enter) {
-      } else if (keyEvent.data is RawKeyEventDataAndroid) {
-        _keyController.sink.add(keyEvent.data.keyLabel);
-        keycode = (keycode! + keyEvent.data.keyLabel.toString());
-      } else if (keyEvent.data is RawKeyEventDataFuchsia) {
-        _keyController.sink.add(keyEvent.data.keyLabel);
-        keycode = (keycode! + keyEvent.data.keyLabel.toString());
-      } else if (keyEvent.data is RawKeyEventDataWindows) {
-        _keyController.sink.add(keyEvent.data.keyLabel);
-        keycode = (keycode! + keyEvent.data.keyLabel.toString());
-      } else if (keyEvent.data is RawKeyEventDataWeb) {
-        _keyController.sink.add(keyEvent.data.keyLabel);
-        keycode = (keycode! + keyEvent.data.keyLabel.toString());
-      } else if (keyEvent.data is RawKeyEventDataIos) {
-        _keyController.sink.add(keyEvent.data.keyLabel);
-        keycode = (keycode! + keyEvent.data.keyLabel.toString());
-      } else if (keyEvent.data is RawKeyEventDataMacOs) {
-        _keyController.sink.add(keyEvent.data.keyLabel);
-        keycode = (keycode! + keyEvent.data.keyLabel.toString());
-      } else if (keyEvent.data is RawKeyEventDataLinux) {
+      } else if (keyEvent.data is RawKeyEventDataAndroid ||
+          keyEvent.data is RawKeyEventDataIos ||
+          keyEvent.data is RawKeyEventDataWeb ||
+          keyEvent.data is RawKeyEventDataWindows ||
+          keyEvent.data is RawKeyEventDataMacOs ||
+          keyEvent.data is RawKeyEventDataLinux ||
+          keyEvent.data is RawKeyEventDataFuchsia
+      ) {
         _keyController.sink.add(keyEvent.data.keyLabel);
         keycode = (keycode! + keyEvent.data.keyLabel.toString());
       }
