@@ -4,6 +4,6 @@ This package allows flutter app to scan barcodes from hardware barcode scanner d
 
 ## Refer below Screenshots and example.
 
-![Alt text](./read_barcode_first.jpg)
+![Before Scan](./read_barcode_first.JPG)
 
-![After Scan](./read_barcode_second.jpg)
+![After Scan](./read_barcode_second.JPG)
