@@ -10,7 +10,7 @@ import 'package:flutter/services.dart';
 /// It will notify to the parent class whenever
 /// key event occurs.
 class BarcodeReader with ChangeNotifier {
-  String? keycode = '';
+  List<String?> keycode = List.empty(growable: true);
   DateTime? _lastScannedTime;
   Duration _buffer = Duration(milliseconds: 100);
   late StreamSubscription<String?> _keySubscription;
@@ -29,8 +29,7 @@ class BarcodeReader with ChangeNotifier {
       return;
     }
     if (keyEvent is RawKeyUpEvent) {
-      if (keyEvent.data.logicalKey == LogicalKeyboardKey.enter) {
-      } else if (keyEvent.data is RawKeyEventDataAndroid ||
+      if (keyEvent.data is RawKeyEventDataAndroid ||
           keyEvent.data is RawKeyEventDataIos ||
           keyEvent.data is RawKeyEventDataWeb ||
           keyEvent.data is RawKeyEventDataWindows ||
@@ -39,7 +38,7 @@ class BarcodeReader with ChangeNotifier {
           keyEvent.data is RawKeyEventDataFuchsia
       ) {
         _keyController.sink.add(keyEvent.data.keyLabel);
-        keycode = (keycode! + keyEvent.data.keyLabel.toString());
+        keycode.add(keyEvent.data.keyLabel.toString());
       }
     }
   }
@@ -65,6 +64,7 @@ class BarcodeReader with ChangeNotifier {
   /// This function resets the keycode.
   void resetKeyCode(String? char) {
     _lastScannedTime = null;
-    this.keycode = char;
+    this.keycode = [char];
   }
+
 }

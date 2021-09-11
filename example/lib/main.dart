@@ -28,19 +28,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final barcodeReader = BarcodeReader();
-  String? code;
-
-  @override
-  void initState() {
-    setState(() {
-      code = barcodeReader.keycode;
-    });
-    super.initState();
-  }
+  String? code = '';
+  bool enterPressed = false;
 
   void _listener() {
     setState(() {
-      code = barcodeReader.keycode!;
+      print(barcodeReader.keycode);
+      barcodeReader.keycode.last == 'Enter' ?
+      enterPressed = true :
+      code = barcodeReader.keycode.join();
     });
   }
 
@@ -63,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                   'Scan the barcode, scanned code will be displayed below'),
             ),
             Text(
-              code!,
+              enterPressed ? code! : 'SCAN CODE',
               style: TextStyle(fontSize: 30),
             ),
           ],
