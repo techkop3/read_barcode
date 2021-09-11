@@ -1,6 +1,6 @@
 name: read_barcode
 description: The flutter package used to scan bracode string from a hardware scanner.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/techkop3/read_barcode
 
 environment:

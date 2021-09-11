@@ -17,3 +17,7 @@ Updated API documentation
 
 Final major release.
 improvised keyboard event function and reduced the code of lines.
+
+
+[1.0.1]
+made small changes to read enter key event.
